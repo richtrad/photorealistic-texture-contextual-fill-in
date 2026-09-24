@@ -1,0 +1,285 @@
+{
+  "source_pdf": "paper/Photorealistic_Texture_Contextual_Fill-In_Heritage_2025.pdf",
+  "source_pdf_sha256": "246832bb68ad01386482b46f51133decdc151aa36902b057064130721a924285",
+  "figure_pages": {
+    "1": 3,
+    "2": 5,
+    "3": 6,
+    "4": 9,
+    "5": 12,
+    "6": 13,
+    "7": 16,
+    "8": 17,
+    "10": 21
+  },
+  "vector_figure_pages": {
+    "9": 18
+  },
+  "extracted_images": [
+    {
+      "figure": 1,
+      "pdf_page": 3,
+      "pdf_object": "R106.jpg",
+      "path": "figures/pdf_extracted/figure-01_asset-01.jpg",
+      "format": "jpg",
+      "width": 19185,
+      "height": 13320,
+      "sha256": "8d78800decdbc48622762b1954f4b81b1d3eb8987e09db142efb531945b9413e"
+    },
+    {
+      "figure": 1,
+      "pdf_page": 3,
+      "pdf_object": "R105.jpg",
+      "path": "figures/pdf_extracted/figure-01_asset-02.jpg",
+      "format": "jpg",
+      "width": 1729,
+      "height": 1134,
+      "sha256": "6ba3edf14442fec25300f014aab8eed98a8bcbcdbca7d000ca8b55aa804bb014"
+    },
+    {
+      "figure": 2,
+      "pdf_page": 5,
+      "pdf_object": "R142.jpg",
+      "path": "figures/pdf_extracted/figure-02_asset-01.jpg",
+      "format": "jpg",
+      "width": 922,
+      "height": 661,
+      "sha256": "ac3c63d88945375d0f4b1d23ea8dea2e182d3fc631f68fcbbb91dd60e4ad80c2"
+    },
+    {
+      "figure": 2,
+      "pdf_page": 5,
+      "pdf_object": "R141.jpg",
+      "path": "figures/pdf_extracted/figure-02_asset-02.jpg",
+      "format": "jpg",
+      "width": 922,
+      "height": 661,
+      "sha256": "371867b460de91d9a74f4635e3b12dd1cdda1a9a01ff17e572fefca2bcae33dc"
+    },
+    {
+      "figure": 3,
+      "pdf_page": 6,
+      "pdf_object": "R157.jpg",
+      "path": "figures/pdf_extracted/figure-03_asset-01.jpg",
+      "format": "jpg",
+      "width": 3078,
+      "height": 4217,
+      "sha256": "0912a0181398e830e2117d1af19bbe72c693875fcf7668fdd1a0b90edcd2e9e1"
+    },
+    {
+      "figure": 3,
+      "pdf_page": 6,
+      "pdf_object": "R156.jpg",
+      "path": "figures/pdf_extracted/figure-03_asset-02.jpg",
+      "format": "jpg",
+      "width": 3078,
+      "height": 4217,
+      "sha256": "605d864cda9dd2084a15bfed54c0d6db3e4712a644f62d99a1c577d85e1ad810"
+    },
+    {
+      "figure": 4,
+      "pdf_page": 9,
+      "pdf_object": "R177.jpg",
+      "path": "figures/pdf_extracted/figure-04_asset-01.jpg",
+      "format": "jpg",
+      "width": 859,
+      "height": 574,
+      "sha256": "986217f3ccc6974ec211deba955b88ff6713bf666602e9c4e1f09bd9255ca77d"
+    },
+    {
+      "figure": 4,
+      "pdf_page": 9,
+      "pdf_object": "R176.jpg",
+      "path": "figures/pdf_extracted/figure-04_asset-02.jpg",
+      "format": "jpg",
+      "width": 859,
+      "height": 574,
+      "sha256": "3d9b4e66c3dea11fa5377f29b6274c1776945990d2b127b81e8dd7c3326bdec1"
+    },
+    {
+      "figure": 4,
+      "pdf_page": 9,
+      "pdf_object": "R175.jpg",
+      "path": "figures/pdf_extracted/figure-04_asset-03.jpg",
+      "format": "jpg",
+      "width": 859,
+      "height": 574,
+      "sha256": "ae25f7565e36bd2d630b0ffd0696cd8273974bb273b02f2fdfc1e83363ed9b54"
+    },
+    {
+      "figure": 5,
+      "pdf_page": 12,
+      "pdf_object": "R203.jpg",
+      "path": "figures/pdf_extracted/figure-05_asset-01.jpg",
+      "format": "jpg",
+      "width": 14664,
+      "height": 9820,
+      "sha256": "e7a536575f843f7c6d0a9c460d57a48f39e58c6fcf198578495dfe0d2e147dac"
+    },
+    {
+      "figure": 5,
+      "pdf_page": 12,
+      "pdf_object": "R202.jpg",
+      "path": "figures/pdf_extracted/figure-05_asset-02.jpg",
+      "format": "jpg",
+      "width": 905,
+      "height": 642,
+      "sha256": "45bf1e3a806b721cc25efc2d0732ec011afb737f75d88fea83beb5e7269455d9"
+    },
+    {
+      "figure": 6,
+      "pdf_page": 13,
+      "pdf_object": "R217.jpg",
+      "path": "figures/pdf_extracted/figure-06_asset-01.jpg",
+      "format": "jpg",
+      "width": 4232,
+      "height": 3078,
+      "sha256": "0a70f98240d0bb37bf72a51c967aaeeae7bd666601cace64e1d11a45ee89dcff"
+    },
+    {
+      "figure": 6,
+      "pdf_page": 13,
+      "pdf_object": "R216.jpg",
+      "path": "figures/pdf_extracted/figure-06_asset-02.jpg",
+      "format": "jpg",
+      "width": 4232,
+      "height": 3078,
+      "sha256": "afa869010f9ff51c00c0e92744394ce6f147808112a231a22a90c1c4fb7afe32"
+    },
+    {
+      "figure": 6,
+      "pdf_page": 13,
+      "pdf_object": "R215.jpg",
+      "path": "figures/pdf_extracted/figure-06_asset-03.jpg",
+      "format": "jpg",
+      "width": 4232,
+      "height": 3078,
+      "sha256": "97dc71f43325a6c93b0a0f5ddda3ff93cfcbb6d5d763ef79d12649d26fd45fc3"
+    },
+    {
+      "figure": 6,
+      "pdf_page": 13,
+      "pdf_object": "R214.jpg",
+      "path": "figures/pdf_extracted/figure-06_asset-04.jpg",
+      "format": "jpg",
+      "width": 4232,
+      "height": 3078,
+      "sha256": "b24912f6a844f575166fb5641976035e360a79d3e7494865ce2844fc1c415245"
+    },
+    {
+      "figure": 7,
+      "pdf_page": 16,
+      "pdf_object": "R241.jpg",
+      "path": "figures/pdf_extracted/figure-07_asset-01.jpg",
+      "format": "jpg",
+      "width": 969,
+      "height": 704,
+      "sha256": "f38255088131b192d79adf75ea8849f5bfc13273ddb98b13dc17fbd98d255a3b"
+    },
+    {
+      "figure": 7,
+      "pdf_page": 16,
+      "pdf_object": "R240.jpg",
+      "path": "figures/pdf_extracted/figure-07_asset-02.jpg",
+      "format": "jpg",
+      "width": 969,
+      "height": 704,
+      "sha256": "491893a0ab75a075cda3ecf652eb5ec97c3e9fc7319ed419e6889a12cd9af9eb"
+    },
+    {
+      "figure": 7,
+      "pdf_page": 16,
+      "pdf_object": "R239.jpg",
+      "path": "figures/pdf_extracted/figure-07_asset-03.jpg",
+      "format": "jpg",
+      "width": 969,
+      "height": 704,
+      "sha256": "03f1dc216de5d19051481cdf0eeeb23ebf8d29cfa461aaf2cd072bd4a8a61c35"
+    },
+    {
+      "figure": 7,
+      "pdf_page": 16,
+      "pdf_object": "R238.jpg",
+      "path": "figures/pdf_extracted/figure-07_asset-04.jpg",
+      "format": "jpg",
+      "width": 969,
+      "height": 704,
+      "sha256": "f04ec609504485d22f175e175c9d8771caf786c9bf476cf548b63da2d4a556fd"
+    },
+    {
+      "figure": 7,
+      "pdf_page": 16,
+      "pdf_object": "R237.jpg",
+      "path": "figures/pdf_extracted/figure-07_asset-05.jpg",
+      "format": "jpg",
+      "width": 1103,
+      "height": 807,
+      "sha256": "ab27aea9db176aa9e351ca55eb08f8ae5e8c716f3c5b76375f7b51398df812e6"
+    },
+    {
+      "figure": 7,
+      "pdf_page": 16,
+      "pdf_object": "R236.jpg",
+      "path": "figures/pdf_extracted/figure-07_asset-06.jpg",
+      "format": "jpg",
+      "width": 1103,
+      "height": 807,
+      "sha256": "5965ebf0783590eea99217246a7e761b135156d6ee3e9d04d067e1f8a13aa857"
+    },
+    {
+      "figure": 7,
+      "pdf_page": 16,
+      "pdf_object": "R235.jpg",
+      "path": "figures/pdf_extracted/figure-07_asset-07.jpg",
+      "format": "jpg",
+      "width": 969,
+      "height": 704,
+      "sha256": "ad513b126b6b2ea0f8a80abff06aaad96d42cf37943c7689bdd9b2d09608fe1b"
+    },
+    {
+      "figure": 7,
+      "pdf_page": 16,
+      "pdf_object": "R234.jpg",
+      "path": "figures/pdf_extracted/figure-07_asset-08.jpg",
+      "format": "jpg",
+      "width": 1100,
+      "height": 804,
+      "sha256": "9c2b8a0352496d8f2b101fdc26ffeb74cf8c016fbbf88d7674bbc25b7db1543a"
+    },
+    {
+      "figure": 8,
+      "pdf_page": 17,
+      "pdf_object": "R249.jpg",
+      "path": "figures/pdf_extracted/figure-08_asset-01.jpg",
+      "format": "jpg",
+      "width": 800,
+      "height": 525,
+      "sha256": "aa7f58b7e42ca71438d8f234de1484132c3778b35b61e8ad2ad5069b79260abf"
+    },
+    {
+      "figure": 8,
+      "pdf_page": 17,
+      "pdf_object": "R248.jpg",
+      "path": "figures/pdf_extracted/figure-08_asset-02.jpg",
+      "format": "jpg",
+      "width": 1729,
+      "height": 1134,
+      "sha256": "7ce0334a399ae3c163bd98b88430e5060d1404fdd9e86728ffdd95d5d19486dc"
+    },
+    {
+      "figure": 10,
+      "pdf_page": 21,
+      "pdf_object": "R273.jpg",
+      "path": "figures/pdf_extracted/figure-10_asset-01.jpg",
+      "format": "jpg",
+      "width": 4232,
+      "height": 3078,
+      "sha256": "55c517e896d236b4544e3b5538ae709618aaa2f71d9d5647cd7768b4337ef65b"
+    }
+  ],
+  "transformations": [
+    "PDF raster-object decode only",
+    "no resampling",
+    "no retouching"
+  ]
+}

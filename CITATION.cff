@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this archive, please cite the Heritage article and this repository."
+title: "Photorealistic Texture Contextual Fill-In"
+version: "1.0.0"
+date-released: 2026-09-25
+authors:
+  - family-names: Richtr
+    given-names: Radek
+doi: 10.3390/heritage8010009
+url: https://github.com/richtrad/photorealistic-texture-contextual-fill-in

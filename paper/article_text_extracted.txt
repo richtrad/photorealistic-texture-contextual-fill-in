@@ -1,0 +1,939 @@
+2.92.0
+Photorealistic Texture Contextual
+Fill-In
+Radek Richtr
+Article
+https://doi.org/10.3390/heritage8010009
+Academic Editor: Nicola Masini
+Received: 23 October 2024
+Revised: 27 November 2024
+Accepted: 9 December 2024
+Published: 27 December 2024
+Citation: Richtr, R. Photorealistic
+Texture Contextual Fill-In. Heritage
+2025, 8, 9. https://doi.org/10.3390/
+heritage8010009
+Copyright: © 2024 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license
+(https://creativecommons.org/
+licenses/by/4.0/).
+Article
+Photorealistic T exture Contextual Fill-In
+Radek Richtr
+Faculty of Information Technology , Czech Technical University in Prague, 160 00 Praha, Czech Republic;
+richtrad@ﬁt.cvut.cz
+Abstract: This paper presents a comprehensive study of the application of AI-driven in-
+painting techniques to the restoration of historical photographs of the Czech city Most,
+with a focus on restoration and reconstructing the lost architectural heritage. The project
+combines state-of-the-art methods, including generative adversarial networks (GANs),
+patch-based inpainting, and manual retouching, to restore and enhance severely degraded
+images. The reconstructed/restored photographs of the city Most offer an invaluable
+visual representation of a city that was largely destroyed for industrial purposes in the
+20th century . Through a series of blind and informed user tests, we assess the subjective
+quality of the restored images and examine how knowledge of edited areas inﬂuences
+user perception. Additionally , this study addresses the technical challenges of inpainting,
+including computational demands, interpretability , and bias in AI models. Ethical consid-
+erations, particularly regarding historical authenticity and speculative reconstruction, are
+also discussed. The ﬁndings demonstrate that AI techniques can signiﬁcantly contribute
+to the preservation of cultural heritage, but must be applied with careful oversight to
+maintain transparency and cultural integrity . Future work will focus on improving the
+interpretability and efﬁciency of these methods, while ensuring that reconstructions remain
+historically and culturally sensitive.
+Keywords: cultural heritage; image reconstruction; colorization; urban; Most; inpainting;
+neural ﬁlters
+1. Introduction
+Inpainting, or content-aware ﬁll, has become essential in the restoration and preserva-
+tion of historical images and videos, where damage due to aging or environmental factors
+often affects the integrity of stored media [ 1]. Today , inpainting is applied not only for
+damage restoration but also as a tool for image editing, such as in text-to-image systems
+like SORA [
+2] or simple automatic inpainting in public popular software like Photoshop
+or Canva.
+The terms content-aware ﬁll and inpainting [ 3] typically describe input data struc-
+tured as a 3D matrix of RGB pixels as individual frames with textures. This well-known
+format better captures essential characteristics like frequency details, color consistency , and
+homogeneity , elements often crucial for historically faithful restoration of urban scenes
+like those of Most (samples of original photographs at Figure 1), where architectural and
+textural continuity must be preserved.
+As inpainting methods grow more sophisticated [ 3], they introduce both beneﬁts and
+difﬁcult ethical considerations for historical preservation. Neural network-based inpainting
+and generative adversarial networks can convincingly reconstruct missing or restore dam-
+aged sections, but they also risk adding speculative details, which may raise questions of
+authenticity . Conversely , patch-based approaches generally offer conservative restorations
+Heritage 2025, 8, 9 https://doi.org/10.3390/heritage8010009
+Heritage 2025, 8, 9 2 of 21
+with minimal speculative additions but may lack simplicity of use and ﬂexibility in repre-
+senting complex structures, posing challenges when reconstructing historically signiﬁcant
+imagery where accuracy is paramount.
+Figure 1. Examples of original archive photos of Most in various quality .
+Currently , professional photo and video software broadly utilize modern inpainting
+algorithms [3–5], often termed content-aware ﬁll, as a standard feature [ 6]. For historical
+restoration, however, the term inpainting encompasses both the recovery and synthesis
+of missing or unwanted data across entire images, requiring careful handling to balance
+visual appeal and historical ﬁdelity .
+The application of artiﬁcial intelligence in cultural heritage preservation offers un-
+precedented opportunities for restoration, cataloging, and enhancing public access to
+historically signiﬁcant artifacts. AI technologies, such as machine learning and GANs, can
+ﬁll in missing parts of artifacts, analyze complex historical data, and support immersive
+experiences that bridge the gap between past and present. However, integrating AI into this
+sensitive ﬁeld introduces complex ethical challenges, particularly regarding authenticity ,
+interpretative bias, and cultural ownership. Scholars emphasize the need for sector-speciﬁc
+ethical frameworks that address these unique concerns, as broad, generic AI principles
+often fall short in meeting the nuanced needs of cultural heritage preservation [ 7].
+In the context of AI-driven digital recreation, issues of “digital colonialism” emerge [8],
+especially when reconstructions are created by foreign entities without input from local
+communities. Such practices risk decontextualizing heritage from its community , poten-
+tially eroding its cultural signiﬁcance. As cultural heritage is increasingly recognized not
+merely as a collection of artifacts but as a dynamic social process, it is essential to balance
+technological advancements with respect for the social, cultural, and economic values that
+these artifacts embody . An inclusive ethical approach that respects local perspectives and
+maintains the cultural continuity of heritage is critical to ensuring that AI-driven preserva-
+tion efforts do not inadvertently prioritize technology over the values of the communities
+represented by the artifacts.
+Furthermore, recent studies underscore the importance of adopting a human-centered
+approach to AI in cultural heritage, advocating for frameworks that prioritize community
+agency , transparency , and shared responsibility . This consideration must be respected
+in the data collection process, especially for cases such as the city of Most, which, while
+transformed, remains a living and signiﬁcant cultural environment.
+Here, we review a range of approaches that prioritize both the quality and homogene-
+ity of restored textures while considering the ethical implications of their application in
+historically sensitive contexts. Our focus is on methods that strive to minimize residual
+input errors, thereby preserving historical authenticity even when confronted with limited
+or degraded source material.
+Heritage 2025, 8, 9 3 of 21
+2. State-of-the-Art
+Advances in artiﬁcial intelligence have brought transformative tools to the ﬁeld of
+cultural heritage preservation, enabling new levels of accuracy and efﬁciency in restoration.
+However, these technologies also present signiﬁcant ethical considerations, especially in
+terms of authenticity , interpretive bias, and cultural ownership. Many researchers [ 7,9]
+stress the need for sector-speciﬁc ethical frameworks that address the nuanced require-
+ments of cultural heritage [ 10], as broad AI guidelines often fail to account for the unique
+sensitivities involved in representing historical artifacts and narratives
+One of the central issues is “digital colonialism”, where foreign-led AI reconstructions
+risk disconnecting heritage items from their cultural context, potentially diminishing their
+cultural value. Ethical approaches to heritage restoration must therefore include local
+perspectives to safeguard the socio-cultural signiﬁcance of artifacts. This is especially criti-
+cal [11] when using AI models in reconstructive tasks, as such models can unintentionally
+impose a modernized or biased interpretation on culturally sensitive material. Scholars
+advocate [12] for a human-centered framework that prioritizes transparency , community
+input, and a balanced approach to technology adoption within heritage preservation.
+Regarding photo manipulation, ethical concerns have arisen over the distinction
+between correction (enhancing clarity or completeness) and corruption (adding speculative
+or misleading content). Scholars [ 13] argue that transparency in restoration techniques
+is crucial to maintaining public trust in digital heritage projects. Historical precedents
+in analog manipulation are acknowledged, but the scale and subtlety enabled by digital
+tools amplify these risks, underscoring the need for clear standards and public awareness
+regarding alterations.
+Technically , the ﬁeld of inpainting has developed from early methods of hole ﬁll-
+ing—like the level-line techniques of Masnou and Morel [ 14] and the autoregressive model
+by Roosmalen [15]—to more sophisticated algorithms. These include texture synthesis tech-
+niques, such as quilting [ 16], graphcut [17], and exemplar-based inpainting [ 18]. Current
+inpainting methods apply small patches with energy-minimizing criteria to ﬁll occluded
+regions, effectively segmenting images into foreground and background to accommo-
+date camera motion and lighting changes. Techniques from Newson [ 19] and Wexler [20]
+exemplify this approach, typically requiring user-deﬁned masks to direct inpainting.
+Recent advancements in convolutional neural networks and generative adversarial
+networks have enabled robust inpainting over larger areas, though computational demands
+and training data requirements remain high. CNN models, like those by Tesfaldet [ 21]
+and Xie [22], deliver visually consistent results with minimal artifacts, while GAN-based
+approaches offer ﬂexible synthesis options for reconstructing complex structures. However,
+they require extensive computational power and large datasets, which can limit their
+application in resource-constrained heritage projects.
+Generative AI models, such as DALL-E [ 23], Midjourney [24], and the SORA model [2],
+demonstrate remarkable capabilities in producing high-ﬁdelity visuals from textual de-
+scriptions. These models introduce both opportunities and risks, particularly when used
+to recreate or supplement heritage imagery . AI-driven reconstructions from models like
+SORA blur the distinction between authentic and synthetic content, necessitating careful
+ethical consideration in heritage settings where historical ﬁdelity is paramount. Schol-
+ars [8] emphasize that high-quality generative models should be used with transparency to
+prevent misrepresentation or erosion of public trust in digitally preserved artifacts.
+To address these concerns, detection methods for AI-generated media have emerged,
+focusing on identifying artifacts in the frequency domain. For instance, high-frequency
+noise analysis can help discern subtle irregularities introduced by partitioning and patch-
+based generation methods. This detection approach provides a preliminary mechanism for
+Heritage 2025, 8, 9 4 of 21
+evaluating content authenticity , particularly in historical restarations and reconstructions,
+where the preservation of authenticity is essential.
+The proliferation of generative AI models, exempliﬁed by breakthroughs such as
+DALL-E [23] or Midjourney [ 24] and many others [ 25] and advancements in video synthe-
+sis like the SORA [ 2] open AI model, has ushered in a new era of content creation. These
+models, developed by organizations like OpenAI with its various models [ 26], demonstrate
+remarkable capabilities [27] in generating high-ﬁdelity visual content from textual descrip-
+tions. While the potential applications of such technology are vast and varied, they also
+raise profound ethical implications and uncertainties.
+Collectively , these studies contribute to a rich foundation of techniques but raise
+many ethical issues to consider in the use of artiﬁcial intelligence in cultural heritage
+inpainting. Incorporating both technical and ethical frameworks, the ﬁeld aims to create
+responsible, transparent methods that honor cultural narratives while harnessing the
+potential of artiﬁcial intelligence to preserve and restore historically signiﬁcant artifacts.
+3. Methodology
+3.1. Project Motivation
+As New York Times photo critic Andy Grundberg noted, “In the future, newspaper
+readers and magazines are likely to view news images as illustrations rather than reporting,
+because they can no longer distinguish between the real image and the image that was
+manipulated”. This prediction has become even more relevant today , as ethical concerns
+continue to grow, particularly with the widespread availability of powerful AI-based tools
+that allow for effective and seamless image manipulation.
+The preservation of cultural heritage through digital restoration serves as both a
+safeguard for historical memory and a bridge connecting contemporary society with its past.
+In cities that have undergone signiﬁcant transformations, digital reconstruction offers an
+invaluable means of visualizing and preserving historical architecture and landscapes. For
+the city of Most, which was largely demolished in the 1960s and 1970s to make way for coal
+mining, the potential for digital inpainting lies in restoring its pre-demolition appearance
+based on historical photographs. By removing modern elements or obstructions, such as
+cars, trees, and other additions, and recreating missing architectural details, these digital
+reconstructions enable viewers to access a representation of Most (see a simple example of
+retouching and coloring in Figure 2) as it once was, preserving the city’s cultural identity
+for future generations.
+Figure 2. Examples of the ability to reconstruct color an restore artiﬁcially damaged photograph.
+Beyond Most, similar challenges and opportunities exist for heritage sites worldwide.
+In V enice, for instance, the damage caused by environmental changes and the impact of
+tourism endanger its architectural legacy . Digital restoration using inpainting techniques
+could assist in preserving the intricate details of frescoes, mosaics, and building facades.
+Heritage 2025, 8, 9 5 of 21
+For sites like Palmyra in Syria, which suffered substantial destruction due to conﬂict, AI-
+driven restoration could aid in reconstructing the appearance of lost monuments based on
+photographic and architectural records. These applications exemplify the broader value of
+inpainting technology in heritage contexts, where the goal is not just to restore images but
+to recreate spaces that hold deep cultural signiﬁcance.
+Technically , content-aware ﬁlling (see demonstration in Figure3) has evolved consider-
+ably since its inception as a tool for repairing damaged images and videos due to the aging
+of media. Initially designed to restore degraded or corrupted areas, it has since been widely
+applied to remove unwanted objects from photos and videos for aesthetic, practical, or
+even political reasons. However, achieving a seamless edit without visible artifacts remains
+challenging, especially when applied to heritage content where both visual quality and
+historical accuracy are paramount.
+Figure 3. (Left): A sample photo where shading obscures much of the building, making reconstruc-
+tion difﬁcult. The appearance of a large part of the building is unknown and cannot be obtained
+even from historical photographs; ( Right): Objects removed and replaced with one of the possible
+reconstructions of the obscured content.
+AI-based methods, especially those leveraging deep learning and generative models
+like GANs, have shown great promise in generating contextually coherent content that
+blends seamlessly with surrounding areas. These algorithms can “learn” the texture and
+structure of a scene, making them invaluable in reconstructing heritage imagery . However,
+they also face limitations: deep learning models require substantial computational power
+and large datasets, and they may exhibit bias if training data lacks variety . This bias
+can be problematic in heritage applications, as historical scenes often contain textures,
+architectural details, or artifacts that are not well-represented in standard training sets.
+Another challenge arises when the dataset lacks the desired textures or visuals of historical
+buildings. In such cases, there is a risk of introducing unintended “modernization” into the
+reconstructed (and not restored) images, as the inpainting algorithms may ﬁll gaps with
+contemporary patterns or features not present in the original structures.
+Another critical issue is the interpretability of AI-based techniques, which is often
+limited, making it difﬁcult to verify how the algorithm produces certain results. In heritage
+Heritage 2025, 8, 9 6 of 21
+contexts, where accuracy and oversight are essential, this lack of transparency can hinder
+the validation process. Additionally , ensuring that the inpainted areas appear natural and
+free from artifacts is paramount, as the human visual impression is the ultimate measure of
+success. In the context of Most, for instance, reconstructed scenes must look historically
+authentic and consistent with remaining archival materials to serve their educational and
+commemorative purposes.
+These technical and ethical challenges highlight the need for carefully considered meth-
+ods in digital heritage restoration. Through responsible application of AI-based inpainting,
+projects like the digital restoration of Most can contribute to preserving history while
+mitigating the risks of introducing unintended distortions. In so doing, digital heritage
+projects offer a powerful way to honor and communicate the cultural identities embedded
+in historical artifacts and sites, ensuring that they remain accessible and meaningful for
+future generations.
+3.2. Restoration and Reconstruction
+Restoration traditionally refers to the process of returning an artifact, building, or
+object to a known earlier state by removing later additions or repairing damage without
+introducing speculative elements. We use it here in this sense.
+The goal is to preserve the authentic material as much as possible, maintaining the
+integrity and continuity of cultural heritage. In our project, restoration involves correcting
+degraded historical data—such as scratches, overexposure, and other forms of damage
+using AI-based techniques to enhance the original images. The interpretability of AI
+methods in restoration is generally more straightforward (or even unnecessary) because
+the role of AI is to identify and correct known defects while closely adhering to the original
+material. Techniques like noise reduction and scratch removal can be validated against
+undamaged portions of the data, making AI decision-making more transparent and easier
+to interpret.
+Reconstruction involves recreating missing parts (see Figure 3) when direct restoration
+is impossible due to extensive damage or lack of original materials. This includes ﬁlling
+missing areas of photographs or rebuilding structures without precise documentation. The
+aim is not only visual restoration but also the re-establishing of cultural and historical
+signiﬁcance. In the Most project, reconstruction seeks to restore physical structures and
+the city’s memory and identity . AI interpretability here is more complex, as algorithms
+generate content based on learned patterns, introducing potential speculation. This raises
+concerns about authenticity , necessitating transparency about AI models, training data,
+and associated uncertainties.
+Colorizing black-and-white photographs lies between restoration and reconstruc-
+tion, adding interpretive information that enhances historical connection but introduces
+speculation due to the (usually) unknown exact colors, as AI adds speculative informa-
+tion to non-speculative, original data. Moreover, different methods can produce very
+different [28] results.
+By explicitly expressing these distinctions and addressing the interpretability of AI-
+based techniques, the project can better communicate the challenges and limitations as-
+sociated with restoring and reconstructing historical buildings and photographs using
+digital methods. This underscores the importance of transparency and interpretability in AI
+applications to maintain a dynamic and evolving understanding of authenticity , balancing
+historical accuracy with the necessity of speculative reconstruction.
+Heritage 2025, 8, 9 7 of 21
+3.3. Corrupt or Not Corrupt?
+In the context of the Most reconstruction project, a case could be made where “corrup-
+tion” in the form of photo manipulation may not necessarily be problematic or ethically
+wrong, particularly when serving the goals of historical education and preservation. Here’s
+a reasoned counterargument:
+3.3.1. Corruption as a Tool for Reconstructing Lost History
+While photojournalism prioritizes truth-telling and accuracy in representing current
+events, in the case of the city of Most, the goal is not merely to preserve an unaltered histori-
+cal truth but to reconstruct a historical narrative that has been lost. The destruction of Most,
+including its buildings and urban layout, means that visual records may be incomplete or
+insufﬁcient. In this context, certain “corruptions”—in other words, purposeful alterations or
+speculative reconstructions—might be necessary and justiﬁable for the following reasons:
+Restoring a Complete Visual Representation
+Many historical photos of Most before its demolition may be obstructed by modern
+elements like cars, trees, or passersby , preventing an accurate view of the city’s architectural
+details. Removing these elements and reconstructing what likely existed beneath them
+may involve educated guesses based on available data. While this process introduces
+speculative elements (and thus can be seen as a form of “corruption”), it serves to rebuild
+an otherwise lost view of the city as it once stood, which is critical for cultural memory and
+historical understanding.
+Filling in Gaps Where No Visual Data Exists
+In cases where no complete photographic records exist, speculative reconstruction
+may be the only option to provide a coherent and holistic view of the city . For instance, if
+only fragmented records of a particular street or building remain, “corruption” in the form
+of recreating missing sections (see Figure 4) based on architectural patterns or historical
+descriptions may serve a legitimate educational purpose. While this introduces non-
+historical elements, the intent is not deception but offering a plausible version of a lost
+historical reality .
+Enhancing Public Engagement and Accessibility
+Reconstructing lost historical spaces can help make cultural heritage accessible to a
+broader audience. For instance, a digital reconstruction of Most, even with speculative
+elements, may allow individuals to interact with and learn about the city’s history in
+ways that a fragmented or incomplete representation could not achieve. Here, corrup-
+tion is not intended to deceive but to engage, educate, and preserve cultural heritage
+through visualization, acknowledging that some interpretative leaps are needed to restore
+lost content.
+Acknowledging Speculative Elements Transparently
+One way to mitigate concerns about “corruption” is to clearly differentiate between
+what is factual (based on historical evidence) and what is speculative reconstruction. By
+transparently labeling which parts of the image or video have been altered or reconstructed,
+the potential ethical issues of “corruption” are addressed upfront. This transparency allows
+viewers to understand that while certain elements are speculative, they serve a historical
+and educational purpose rather than an intent to deceive.
+Heritage 2025, 8, 9 8 of 21
+Figure 4. Four possible results of ﬁlling the obscured area using the content-aware ﬁll method [ 6].
+3.4. Reﬂections on Speculative Reconstruction
+In the context of Most’s historical reconstruction, “corruption” in the form of specu-
+lative reconstruction can be justiﬁed when it is used responsibly to recreate lost cultural
+heritage and is clearly labeled and communicated. The key is ensuring that any manipula-
+tions are transparent and well-intentioned, aiming to restore history for public education
+rather than distort it. In this case, the primary goal is to recover and preserve an under-
+standing of the past rather than adhere strictly to the raw photographic truth of incomplete
+or obstructed records.
+3.5. Problem Statement
+The core challenge addressed in this article lies in the restoration and reconstruction
+of historical imagery using AI-driven inpainting methods, with a speciﬁc focus on the
+city of Most. Due to its near-total demolition, Most represents a unique case of lost urban
+history that can only be recovered through the careful restoration of existing photographs.
+However, the restoration of these historical images involves signiﬁcant technical and
+ethical challenges.
+Technologically , modern inpainting methods—ranging from patch-based techniques
+to deep learning algorithms—must seamlessly reconstruct missing parts of the city’s archi-
+tectural and urban features while maintaining visual coherence and historical authenticity .
+The removal of modern-day obstructions (such as cars, trees, and people) further compli-
+cates the task, as it requires the algorithm to ﬁll in these gaps with accurate reconstructions
+of what may have existed in the past.
+From an ethical perspective, the use of AI to reconstruct historical imagery introduces
+questions of authenticity and speculative reconstruction. While AI-driven inpainting offers
+the potential to recreate lost details, it also risks introducing elements that may not have
+been present, raising concerns about the historical ﬁdelity of the ﬁnal product. These
+challenges are compounded by the inherent biases in AI training data, which may fail to
+represent the unique textures, colors, and architectural styles of historical environments
+like Most. Thus, the primary problem addressed in this article is how to effectively lever-
+Heritage 2025, 8, 9 9 of 21
+age AI-driven inpainting for historical restoration while minimizing technical ﬂaws and
+ethical concerns.
+The source data consists of high-resolution color scans of physical black-and-white
+photographs and negatives in digital TIFF format. In some cases, the photographs are
+supplemented with annotated metadata, such as house numbers, street names, dates
+when the photographs were taken, and periods when buildings were reconstructed or
+demolished. However, metadata are available for only a portion of the photographs; for
+the majority , such information is lacking. Consequently , photographs depicting the same
+houses or streets need to be detected and matched using image analysis techniques.
+Given that all buildings were documented during the demolition of the city , the
+number of available photographs is substantial. These images have been provided by both
+citizens of the city and, more predominantly , by museum and geodetic institutions (the
+process of scanning these photographs is still in its early stages; about a thousand more
+images are expected to become available as the project progresses).
+The scans are performed at a color depth of 24 bits, with resolutions tailored to the
+exact format of each photograph, typically around 12,000 × 14,300 pixels with our given
+standard at 2400 dpi, resulting in a memory size of about half a gigabyte per image. This
+high resolution ensures that the scans capture the photographic grain, allowing restoration
+algorithms to operate effectively at the grain level.
+3.6. Objectives
+The objectives of this article are as follows:
+1.
+Showcase Capability of Corrupting Inpainting Methods for Historical Accuracy:
+Assess different AI-driven inpainting techniques, such as patch-based methods and
+neural network approaches like GANs, for their ability to accurately reconstruct
+missing portions or restore damaged areas of historical photographs. The evaluation
+will focus on how well users perceive the quality of these reconstructed materials.
+2. Assess Technical Performance: Analyze the computational performance and visual
+quality of inpainting techniques applied to historical photographs, taking into account
+issues such as computational demands, artifact reduction, and boundary error mini-
+mization.
+3. Address Ethical Implications of AI-based Reconstruction: Explore the ethical concerns
+surrounding AI-driven restoration, particularly the balance between reconstructing
+lost historical imagery and the potential introduction of speculative elements that may
+not reﬂect the original scene. This will include a discussion on transparency , ensuring
+that viewers understand where AI-generated content begins and historical fact ends.
+4. Propose Guidelines for Future Applications: Based on the evaluation of inpainting
+methods and ethical considerations, the article will propose best practices for the
+responsible use of AI in historical restoration.
+3.7. Integrating the Concept of Authenticity with the Most Reconstruction Project
+The concept of authenticity plays a crucial role [ 29] in the digital reconstruction of
+historical artifacts, particularly in heritage conservation projects such as the restoration of
+the city of Most. The use of AI-driven inpainting techniques, such as generative adversarial
+networks (GANs) and patch-based methods, is essential in restoring degraded historical
+photographs and reconstructing the lost urban heritage of Most. However, these technolo-
+gies introduce complexities and challenges related to maintaining historical authenticity ,
+especially when dealing with speculative reconstructions.
+Heritage 2025, 8, 9 10 of 21
+3.7.1. Evolution of Authenticity in Digital Heritage
+Authenticity in the digital context is far from being a clear-cut or static concept [ 30,31].
+In the process of digitizing cultural artifacts and heritage sites, authenticity transforms from
+a purely physical attribute into a more intellectual and epistemological question. Digital
+reproductions must maintain the integrity of their origin, history , and cultural signiﬁcance.
+The digitization process often leads to debates over the “aura” and “originality” of cultural
+heritage, as digital representations may lose some visceral and sensory elements inherent
+in the original objects.
+Professionals in cultural heritage increasingly recognize the necessity for a more re-
+ﬁned approach to authenticity when addressing digital versions of cultural artifacts. A core
+element of conservation is the identiﬁcation of heritage values, which serves to evaluate
+signiﬁcance, allocate resources effectively , and guide decision-making processes. These val-
+ues are central to understanding authenticity—a multifaceted concept developed to assess
+how cultural heritage communicates its attributed values. This notion has evolved through
+numerous international charters and conventions. Heritage values evolve alongside social
+changes and can frequently conﬂict with one another; a typical example is the tension in
+architectural heritage between archaeological signiﬁcance and functional use.
+3.7.2. Balancing Authenticity and Technological Capability
+The integration of AI technologies in heritage preservation brings an evolving inter-
+pretation of authenticity . In traditional conservation, authenticity was concerned mainly
+with the material integrity of heritage. In the digital era, however, it has come to mean
+how accurately digital reconstructions represent the original cultural and historical signiﬁ-
+cance [30,32]. For the Most reconstruction project, achieving this balance involves multiple
+technical methods, ranging from AI-driven neural networks for complex inpainting to
+patch-based methods for more straightforward tasks. These technologies aim to ensure
+that reconstructions are as faithful as possible to the original historical context, but their
+limitations also highlight the challenges of adhering to authenticity .
+Despite some theorists are less [ 33] or more [ 34] against the emerging ideas, the
+importance of material authenticity and criticizing imitations, we recognize the need for
+the project outcome to be accessible and usable for the general public. Addressing concerns
+from historians within our project about the dangers of creating false, non-authentic data,
+allowing users to identify which data are original (and view their sources) and which
+are synthesized.
+Transparency in presenting the reconstructed images is thus a vital aspect of authen-
+ticity . By marking speculative areas and providing additional contextual information, the
+project aims to avoid misleading viewers. However, authenticity is challenged by the need
+to address gaps in historical data, making speculative reconstructions necessary .
+3.8. Data Collection and Preparation
+The primary data sources used for this project consist of black and white historical
+photographs of the city of Most, captured before its large-scale demolition in the 1960s
+and 1970s. These photographs are crucial for digitally reconstructing the lost architectural
+heritage of the city . The photos, often degraded over time due to factors such as aging,
+exposure to light, and physical damage, are digitized at a high resolution (minimum
+600 dpi) to ensure that the restoration process captures as much detail as possible. Only a
+few colorized postcards are available as source data (see Figure 5)
+Once digitized, a detailed analysis of the photographs is conducted to identify visi-
+ble damage such as scratches, dust, and fading. Preprocessing techniques such as noise
+reduction, contrast enhancement, and scratch removal are applied to restore the pho-
+Heritage 2025, 8, 9 11 of 21
+tographs. Several tools are employed for this process, including Adobe Photoshop and
+neural ﬁlters [
+35] for automated restoration, alongside manual retouching techniques
+where necessary .
+Figure 5. Reference data for the colorization process. Unfortunately , the amount of similar, usually
+hand-colored photographs is extremely small.
+3.9. T echnical Approaches
+Various AI-based and traditional techniques are employed for inpainting and restora-
+tion of the historical photographs of Most:
+•
+Neural Networks: Convolutional neural networks (CNNs) are utilized to remove
+noise and reconstruct damaged or missing areas in the photographs. These deep
+learning models are trained [
+35] on large datasets of historical imagery to learn the
+textures, structures, and patterns of the photos. GANs are also used for more complex
+restoration tasks, such as reconstructing missing architectural elements based on
+historical data. As we aim to create workﬂows for wider audiences, we currently don’t
+use GANs to produce results but are training a GAN for future purposes to achieve
+better results.
+• Patch-based Inpainting: For simpler restoration tasks, patch-based inpainting is ap-
+plied. This method works by copying patches from undamaged regions of the photo-
+graph and pasting them into the damaged areas, ensuring that the new textures match
+the surrounding content. This method is particularly effective for restoring uniform
+areas, such as walls or skies.
+• Manual and Semi-Automatic Retouching: In some cases, manual retouching tech-
+niques are necessary to ensure the highest quality restoration. Tools like the clone
+stamp and healing brush in Adobe Photoshop are used to manually correct defects
+that AI algorithms may overlook. Semi-automatic methods combine neural networks
+with user input to adjust and reﬁne the restoration process.
+• Colorization: Initially , the restoration process is applied to the black-and-white pho-
+tographs. Tools like DeOldify [ 36] are employed, which utilize neural networks to
+predict the original colors based on contextual cues from the photographs. An alterna-
+tive is semi-automatic colorization (for results see Figure 6) using neural ﬁlters [ 35].
+Heritage 2025, 8, 9 12 of 21
+Figure 6. Sample of several colored complex photographs of Most city .
+4. Discussion
+4.1. T echnical Challenges
+One of the key technical challenges encountered in the reconstruction of Most’s histor-
+ical photographs involves the computational demands of AI-driven inpainting techniques.
+GANs and other neural networks require signiﬁcant processing power, particularly when
+reconstructing large or complex areas of the images. The high-resolution nature of the
+photographs further increases the computational load, resulting in longer processing times.
+While patch-based inpainting methods are less computationally intensive, they often
+produce less accurate results, especially in more intricate sections of the images such as
+architectural details. Reducing these computational requirements without sacriﬁcing visual
+quality remains a major challenge. Notably , considerable computing time is required due
+to the large volume of data (up to 1 GB per photo scan) that needs to be processed.
+Another challenge lies in the interpretability of the AI models used for reconstruction.
+Deep learning models can generate realistic visual content, but understanding exactly
+how the model makes certain decisions—such as how it ﬁlls in missing architectural
+elements—is often unclear. This lack of transparency can be problematic, especially when
+ensuring the historical authenticity of the reconstructed content. There is an ongoing need
+for more interpretable AI models that can provide explanations for the choices made during
+the inpainting process.
+Lastly , bias in AI models presents a signiﬁcant challenge. The models used for this
+project were trained on datasets that may not fully represent the speciﬁc architectural and
+cultural nuances of Most. As a result, some reconstructed areas may reﬂect a modern or
+generalized aesthetic that is not fully aligned with the city’s historical reality . Although
+manual intervention mitigates this issue, there is a need for more tailored datasets that
+can help reduce the risk of biased outputs and improve the cultural speciﬁcity of AI-
+generated content.
+4.2. Ethical and Cultural Implications
+The ethical considerations in reconstructing historical artifacts, particularly using AI,
+are multifaceted. One of the main concerns is authenticity. AI-generated reconstructions,
+while visually impressive, can introduce speculative or inaccurate details that did not exist
+Heritage 2025, 8, 9 13 of 21
+in the original artifacts. This raises questions about the ﬁdelity of the restored images to the
+historical record. In the case of Most, where much of the original city has been destroyed,
+these reconstructions play a vital role in shaping how future generations perceive the city’s
+history . However, it is crucial that these reconstructions remain as accurate as possible to
+avoid misrepresentation of historical events or architectural details.
+Transparency is essential when dealing with AI-generated content in cultural heritage.
+The project’s approach of clearly marking which areas are based on factual historical data
+and which involve speculative reconstruction helps mitigate some of the ethical risks.
+However, the potential for misleading the public—especially when AI reconstructions are
+presented without sufﬁcient context—remains a concern. Ensuring that these reconstruc-
+tions are labeled and accompanied by explanations of their limitations is a critical step
+toward maintaining the integrity of cultural heritage.
+Another consideration is the cultural ownership of the restored content. AI-driven
+reconstruction, especially when applied to culturally signiﬁcant artifacts, must respect the
+rights and perspectives of the communities to whom the artifacts belong. In the case of
+Most, the project engages with local historians and experts to ensure that the reconstructed
+images align with the cultural memory of the city’s residents. Future work should continue
+to involve community stakeholders in the reconstruction process to ensure that the AI-
+generated artifacts are not only technically accurate but also culturally sensitive.
+4.3. Ethical and Interpretative Considerations
+A signiﬁcant challenge in AI-based inpainting is maintaining historical authenticity.
+Since neural networks and GANs can generate new content to ﬁll missing areas, there is a
+risk of introducing speculative or inaccurate details into the restoration. To mitigate this,
+each inpainted image is carefully reviewed by historians to ensure that the reconstructed
+areas are as faithful as possible to the original context.
+Furthermore, transparency is a critical component of this process. The project clearly
+delineates which parts of the restored image are based on factual evidence and which
+are speculative reconstructions. This distinction ensures that viewers are not misled into
+believing that fully reconstructed areas are necessarily historically accurate.
+Additionally , we continually strive to balance the use of AI-generated content with
+ethical guidelines that uphold historical integrity . The potential for AI to generate convinc-
+ing yet ﬁctional elements requires that the results be rigorously vetted and that metadata
+accompanying the images reﬂects any non-historical reconstructions.
+4.4. Case Study: Digital Reconstruction of the City of Most Historical Photography
+Background Information
+The city of Most in the Czech Republic underwent a signiﬁcant transformation in
+the mid-20th century , when large parts of the historic city were demolished to facilitate
+coal mining operations. This destruction erased many of the architectural and cultural
+landmarks that deﬁned the city for centuries. However, historical photographs from
+before the demolition provide a valuable window into the past, offering the opportunity
+to digitally reconstruct these lost landmarks. Reconstructing Most is not only a technical
+challenge but also a cultural responsibility , as it allows future generations to visualize and
+understand the city’s historical signiﬁcance before its physical disappearance.
+The preservation of Most’s visual history has broader implications for understanding
+how urban landscapes can be transformed by industrial development. The project to
+digitally restore these historical photographs is essential to preserving Most’s architectural
+and cultural legacy , making it accessible to the public through exhibitions, virtual archives,
+and educational resources.
+Heritage 2025, 8, 9 14 of 21
+4.5. Application of Methods
+For the digital reconstruction of Most photographs, the project employed several
+inpainting techniques tailored to the speciﬁc challenges posed by the historical photographs.
+Unlike more generalized restoration efforts, the unique characteristics of Most’s urban
+layout—combined with the extensive damage to the photographic material—necessitated
+a multi-layered approach. The current best workﬂow for most urban photographs is:
+1. Removing Modern Elements: Many of the photographs of Most were taken in the
+decades leading up to the demolition, often featuring modern-day objects like cars,
+streetlights, or passersby that obscured important architectural features. The primary
+goal was to remove these obstructive elements while preserving the historical integrity
+of the buildings and streets beneath. Patch-based inpainting was used to replace these
+elements with textures drawn from surrounding areas, while GANs were employed
+to recreate missing details based on architectural patterns that were consistent across
+multiple photographs of the same area.
+2. Reconstructing Missing Architectural Details: In many cases, key architectural ele-
+ments were obscured by damage or missing entirely from the photographs. Neural
+networks were used to recreate windows, arches, and facades that were vital to
+maintaining the aesthetic continuity of the reconstructed city . This required cross-
+referencing with historical documentation and consultation with historians to ensure
+ﬁdelity to the original structures. Additionally , the architectural plans of the buildings,
+if available, served as suitable control inputs.
+3. Automated and Semi-Automated Retouching: The project also developed automated
+and semi-automated workﬂows for retouching and colorizing images. These methods
+used a combination of AI tools, like Photoshop’s neural ﬁlters, and manual adjust-
+ments to ﬁne-tune results with varying complexity for various target audiences. These
+workﬂows ranged from a simple process for complete laypeople—consisting only
+of loading the image, running the automatic process, and saving the results—to
+manual and semi-manual workﬂows. The step-by-step process involved deﬁning
+areas of correction, and exact tools to use. Similarly , it consists of empirical color
+values best suited for the Most project. It is therefore beneﬁcial to have a range of
+detailed procedures for users with different knowledge and abilities. In addition, it is
+desirable to have multiple procedures reﬂecting the state of various technological and
+software options.
+4. Handling Texture and Lighting Variations: One of the signiﬁcant technical challenges
+encountered during the restoration process was dealing with variations in texture and
+lighting across different sections of the photographs. Older images often have uneven
+lighting due to the limitations of the photographic technology of the time. Neural net-
+works and manual retouching techniques were used to balance these inconsistencies
+and ensure smooth transitions between different sections of the inpainted areas to
+create consistent results.
+5. Historical Colorization: Applying historically accurate colors to black-and-white
+images required deep analysis of available color documentation and contemporary
+references (see Figure 5). Neural network-based tools like DeOldify [ 36] were em-
+ployed to colorize the photographs, but with signiﬁcant manual oversight to ensure
+the chosen color schemes were reﬂective of the time period. For example, exact color
+values of materials such as thatched roofs, burnt bricks, or car paint colors were used.
+This was particularly important for public-facing exhibitions where colorized images
+(see Figure 6) can enhance viewer engagement and provide a more immersive histori-
+cal experience. For instance, externally obtained values used for colorization included
+Heritage 2025, 8, 9 15 of 21
+the colors of shop signs on the square—obtained from colorized postcards—and the
+colors of buses traveling outside the city and public transport buses.
+• Time aspect: On average, this process could take around 10–15 min for simpler images,
+but for more complex cases with signiﬁcant damage or obscure textures, it could take
+up to 60 or more minutes or more in case of photography with many small cracks.
+4.6. Conclusions
+The results of the reconstruction efforts for Most were generally successful, with many
+of the restored photographs achieving a level of visual coherence and historical authenticity
+that allows for accurate public representation. The combination of AI-driven inpainting and
+manual intervention enabled the project team to reconstruct key parts of the city , including
+important architectural landmarks that had been partially or fully obscured in the original
+photographs (see Figure 7).
+Figure 7. (First row): Original black and white photograph and reconstructed color image without
+obscuring objects; ( Second row left ): colorized photo with photos with marked obstructing objects;
+(rest): gradually removed objects, content supplemented by generative AI. Objects must be removed
+in order from the most distant obscuring object to the object closest to the reconstructed object.
+On average, retouching a photograph using these methods required 10–15 min, de-
+pending on the complexity of the scene. However, in more challenging cases where the
+image quality was particularly poor or contained intricate textures, the time required
+for restoration could extend up to 60 min or more, depending on the complexity . This
+variation highlights the importance of both automation and manual effort in achieving
+high-quality restorations.
+Despite the success, several challenges remain. In cases where there was little reference
+material for the missing elements, the reconstructions relied on best-guess estimations,
+albeit supported by historical data and expert reviews.
+Heritage 2025, 8, 9 16 of 21
+The project also highlighted the limits of current AI-basedrestoration methods. While
+neural networks and GANs were effective in reconstructing large areas, finer details often
+required manual retouching to meet the desired level of hist orical accuracy . The balance
+between visual appeal and authenticity was carefully managed to ensure that the final images
+were not only aesthetically pleasing but also credible representations of the city’s past.
+Ultimately , the reconstructed photographs of Most have been successfully used in
+educational programs, exhibitions, and virtual tours, providing a vivid and accessible
+way for people to engage with the city’s lost heritage. The project demonstrates how
+AI-powered restoration techniques, when used in combination with historical expertise
+and ethical guidelines, can contribute to preserving cultural heritage in ways that were
+previously impossible.
+4.7. Results and Evaluation
+4.7.1. Comparative Control Using Known Color Photographs
+In the digital reconstruction of the city of Most, a critical aspect of the evaluation
+process involved comparing the restored images against a small set of known historical
+color photographs. These reference photos provided a reliable benchmark to assess the
+accuracy and quality of the inpainting methods applied to the black-and-white images.
+The comparison focused on how well the reconstructed areas, particularly in terms of
+architectural details and colorization, matched the veriﬁed color references.
+•
+Color Accuracy: Using the known color photographs as a control, we evaluated
+the colorization of the inpainted black-and-white images. Neural network-based
+tools generated color schemes based on contextual information, but the comparison
+revealed some inconsistencies with the reference images. For example, building
+facades and rooftops in the reconstructed images often displayed slight color shifts
+compared to the known historical colors. These deviations were more prominent in
+cases where GANs were used for large-scale reconstructions, leading to subtle but
+noticeable differences in hue and saturation. Manual adjustments were necessary
+to correct these discrepancies, ensuring that the ﬁnal colorized images aligned more
+closely with historical evidence. Similar color shifts were detected in the case of signs
+with shop names (see Figure 8).
+• Architectural Detail Consistency: The known color photographs also served as a
+means to test the ﬁdelity of reconstructed architectural details. GAN-based inpainting
+performed well in recreating intricate elements such as windows and facades, but
+comparison with the color references highlighted occasional over-smoothing or loss
+of texture in some areas. Patch-based methods, while faster, struggled more with
+consistency in ﬁner architectural features. In particular, the comparison revealed that
+neural ﬁlters provided more accurate representations of these details, but still required
+ﬁne-tuning to avoid artiﬁcial or overly uniform textures.
+Figure 8. Two possible results of shop signs color on the Peace square.
+Heritage 2025, 8, 9 17 of 21
+4.7.2. Visual Quality Testing with Human Users
+To evaluate the visual quality of the restored images, we conducted human subject
+testing involving two main components: assessing the perceived authenticity of the recon-
+structions and determining viewer satisfaction with the colorization and inpainting results.
+Perceived Authenticity: A group of test subjects, including both experts, students
+of computer graphics, and general users, were asked to rate the visual authenticity of
+the reconstructed images on a scale from 1 to 5. The evaluation focused on how well the
+restored images conveyed the look and feel of the historical city . Though some users noted
+a lack of texture variability in certain areas, which affected the perception of authenticity ,
+the testing showed that the results were visually plausible overall.
+4.7.3. Psychophysical Tests
+To evaluate the visual quality of the inpainted images, we conducted two types
+of psychophysical tests with participants in a controlled environment within a usability
+laboratory . The controlled environment ensured that all potential disruptive inﬂuences were
+eliminated, such as differences in perception due to varying monitors, lighting conditions,
+and other environmental factors. Additionally , to prevent any potential bias, the moderator
+had no prior involvement in the project. The goal was to compare the subjective perception
+of image quality in scenarios where participants were either unaware of the retouched areas
+(blind test) or were informed about them (informed test). Participants were asked to rate
+the quality of the images on a scale from 1 to 5, where 5 represents the highest visual quality .
+The results from both tests (see Figure 9) provide valuable insights into how awareness of
+inpainting affects the perception of quality .
+Blind Test
+In the blind test, participants were shown images without being informed which parts
+had been altered or retouched, along with some unedited images as control samples. Their
+task was to assess the overall quality of the image based on visual coherence and whether
+they detected any artifacts or inconsistencies. The goal was to determine whether the
+inpainting was successful in creating a seamless visual experience where the modiﬁcations
+were imperceptible.
+The results of the blind test indicated a generally positive reception of the inpainted
+images. Most participants rated the images highly , with the majority of scores falling
+between 4 and 5. The average rating was 4.45, with a standard deviation of 0.62. The
+conﬁdence interval (95%) for the average rating was calculated as [4.31, 4.59]. This suggests
+that, in the absence of additional information, the inpainting methods effectively concealed
+the modiﬁed areas, resulting in high subjective quality ratings.
+1 2 3 4 5
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+3 2 5
+22
+43
+Subjective Quality Scale (1–5)
+User Count
+1 2 3 4 5
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+55
+4 2 2
+15
+52
+Subjective Quality Scale (1–5)
+User Count
+Figure 9. (Left): Graph of user Informed test of the quality of synthesis of p hotos of the Bridge
+(selection of twenty random photos of Peace Square and adjac ent streets). Value 1 is the minimum
+Heritage 2025, 8, 9 18 of 21
+(unsuccessful retouching, obvious manipulation) value 5 is the maximum (high-quality and successful
+retouching, imperceptible manipulation); ( Right): Graph of user Blind test of the quality of synthesis
+of photos of the Bridge (selection of twenty random photos of Peace Square and adjacent streets).
+Value 1 is the minimum (unsuccessful retouching, obvious manipulation) value 5 is the maximum
+(high-quality and successful retouching, imperceptible manipulation)
+Informed Test
+In the informed test, participants were provided with additional information about
+the retouched areas. The images were presented alongside their corresponding masks,
+allowing participants to see exactly which portions had been altered through inpainting.
+This allowed us to assess whether knowledge of the edited areas would affect participants’
+perception of the visual quality .
+The results showed a slight drop in the perceived quality when participants were
+informed of the retouched areas. The average rating was 4.33, with a standard deviation of
+0.68, and the conﬁdence interval (95%) for the average rating was [4.17, 4.49]. The number
+of participants giving the images a perfect score of 5 decreased slightly , with more ratings
+in the 4 to 5 range. This suggests that even when participants are aware of the modiﬁed
+sections, the inpainting methods still perform well, though the awareness of edits does
+have a minor impact on subjective evaluations.
+Comparison of Blind and Informed Tests
+The difference between the blind and informed tests demonstrates the importance of
+perception in evaluating inpainting quality . The average rating decreased from 4.45 in the
+Blind Test to 4.33 in the Informed Test. A paired t-test was conducted to determine whether
+this difference was statistically signiﬁcant. The p-value obtained was 0.045, indicating that
+the difference is statistically signiﬁcant at the α = 0.05 signiﬁcance level. The standard
+deviations of the scores for both tests (0.62 for the Blind Test and 0.68 for the Informed Test)
+suggest that there was a slightly greater variability in participant ratings when they were
+informed of the retouched areas.
+When participants are unaware of the retouched areas, they tend to rate the images
+more favorably . However, even when informed, the overall drop in perceived quality
+is minimal, indicating the robustness of the inpainting methods in producing visually
+cohesive results. The conﬁdence intervals and standard deviations provide further evi-
+dence that the differences in ratings, although statistically signiﬁcant, are relatively small,
+emphasizing the effectiveness of the inpainting methods.
+4.8. Limitations and Future Work
+While the project has produced high-quality reconstructions of Most, there are several
+limitations to the current approach. One signiﬁcant limitation is the availability of data. The
+reconstructions rely heavily on the quality and completeness of the original photographs,
+many of which are damaged or incomplete. In cases where no sufﬁcient photographic
+records exist, the reconstructions involve a degree of speculation, which, while informed
+by historical context, cannot fully capture the original state of the city .
+Additionally , the computational demands of AI-based methods are a limiting factor.
+The processing time required for high-resolution images can slow down the restoration
+process, especially in large-scale projects. Future work should explore more efﬁcient AI
+algorithms that can reduce the computational load without sacriﬁcing the quality of the
+reconstructions, possibly by using specialized AI models trained speciﬁcally for this task.
+Techniques such as model optimization, distributed computing, and the use of lightweight
+neural networks could offer promising solutions.
+Heritage 2025, 8, 9 19 of 21
+Another area for future research is the improvement of interpretability in AI models.
+While current models produce highly realistic results, they operate largely as “black boxes”,
+making it difﬁcult to understand how certain reconstruction decisions are made. Develop-
+ing more interpretable AI models would help increase conﬁdence in the historical accuracy
+of the results and allow experts to better reﬁne the outputs.
+A particularly challenging aspect is the need for human input when coloring problem-
+atic areas, such as brightly colored house facades or shop signs. In the current workﬂow,
+the user must remember the problematic colors and manually reapply the same inputs to
+all photos containing the same object.
+Finally , future research should continue to address the issue of bias in AI models. One
+potential solution is to create domain-speciﬁc datasets that better represent the architectural
+styles, textures, and historical contexts of the areas being reconstructed. By training AI
+models on data that more closely aligns with the cultural and historical speciﬁcs of the target
+area, future projects can produce more accurate and culturally sensitive reconstructions.
+4.9. Final Conclusions
+This study has demonstrated the potential of AI-driven inpainting techniques to
+contribute signiﬁcantly to the preservation and reconstruction of cultural heritage, with
+a speciﬁc focus on the city of Most. By leveraging methods such as GANs, patch-based
+inpainting, and manual retouching, the project was able to reconstruct and restore damaged
+or incomplete historical photographs, offering a window into a lost urban landscape. The
+combination of modern AI tools with historical expertise proved to be an effective strategy
+in reviving cultural artifacts that otherwise might have been forgotten.
+One of the key ﬁndings of this study is the importance of balancing technological
+capability with cultural responsibility. While AI provides powerful tools to reconstruct and
+enhance visual data, it also introduces challenges related to authenticity and interpretability.
+As the case study of Most illustrated, AI-generated content can sometimes introduce
+speculative elements, requiring manual oversight to ensure historical ﬁdelity . Additionally ,
+computational demands and the potential for biased outputs underscore the need for
+careful application and ongoing reﬁnement of these technologies.
+This work also highlights the need for transparency when using AI for cultural preser-
+vation. Ensuring that viewers and stakeholders understand which elements of a restoration
+are fact-based and which are speculative is essential for maintaining the integrity of recon-
+structed artifacts. In the ﬁeld of heritage conservation, where the goal is not only to preserve
+the past but to present it truthfully , this transparency plays a critical role in ensuring public
+trust and academic credibility .
+Moving forward, the integration of AI into cultural heritage preservation will continue
+to evolve. Future research should aim to reﬁne AI models to improve interpretability,
+reduce computational costs, and minimize bias, ensuring that reconstructions are both
+technologically advanced and culturally sensitive. By adhering to ethical guidelines and
+involving local communities and experts in the reconstruction process, AI can become an
+invaluable tool in safeguarding our collective history for future generations.
+While the results of psychophysical experiments appear, from a quality perspective,
+highly positive, it is important to recognize that they also highlight the ethical risks and the
+ease and effectiveness of corrupting historical photographs. Any creation of speculative
+content must, therefore, not only be carefully supervised by experts familiar with the
+speciﬁc subject matter, but also be transparently communicated and never concealed.
+We therefore propose that, in addition to indicating that a given photograph has been
+digitally restored, it should also be clearly stated if any part of the image has been syntheti-
+cally generated. Furthermore, users should have the option to view either the unedited
+Heritage 2025, 8, 9 20 of 21
+original grayscale version or a version where the synthesized sections are highlighted (see
+Figure 10) with a color overlay for transparency .
+Figure 10. Retouched photo example with color-coded overlays. Each colored region indicates an
+area where a signiﬁcant object was removed and subsequently reconstructed.
+Funding: This paper was supported by the project NAKI III DH23P03OVV048, SMK02023DH001,
+048/2023/OVV , Most—a city that did not disappear.
+Informed Consent Statement: Informed consent was obtained from all subjects involved in the study .
+Data Availability Statement: The raw data supporting the conclusions of this article will be made
+available by the authors on request; they will be released publicly via a web-based platform and 3D
+module upon the project’s completion.
+Conﬂicts of Interest: The authors declare no conﬂicts of interest.
+Abbreviations
+The following abbreviations are used in this manuscript:
+AI Artiﬁcial intelligence
+GAN Generative Adversarial Network
+CNN Convolutional neural networks
+References
+1.
+Kokaram, A.C.; Morris, R.D.; Fitzgerald, W.J.; Rayner, P .J.W. Interpolation of missing data in image sequences. IEEE T rans. Image
+Process. 1995, 4, 1509–1519. [ CrossRef] [PubMed]
+2. Brooks, T.; Peebles, B.; Holmes, C.; DePue, W.; Guo, Y .; Jing, L.; Schnurr, D.; Taylor, J.; Luhman, T.; Luhman, E.; et al. Video
+generation models as world simulators. OpenAI, 15 February 2024.
+3. Elharrouss, O.; Almaadeed, N.; Al-Maadeed, S.; Akbari, Y . Image inpainting: A review. Neural Process. Lett. 2020, 51, 2007–2028.
+[CrossRef]
+4. Chen, M.; Duan, Z.; Li, L.; Yi, S.; Cui, A. A Two-Stage Image Inpainting Technique for Old Photographs Based on Transfer
+Learning. Electronics 2023, 12, 3221. [ CrossRef]
+5. Barcelos, I.M.; Rabelo, T.B.; Bernardini, F.; Monteiro, R.S.; Fernandes, L.A. From past to present: A tertiary investigation of
+twenty-four years of image inpainting. Comput. Graph. 2024, 123, 104010. [ CrossRef]
+6. Adobe Inc. Adobe After Effects, Adobe Inc.: San Jose, CA, USA.
+7. Tiribelli, S.; Pansoni, S.; Frontoni, E.; Giovanola, B. Ethics of Artiﬁcial Intelligence for Cultural Heritage: Opportunities and
+Challenges. IEEE T rans. T echnol. Soc.2024, 5, 293–305. [ CrossRef]
+8. Ghaith, K. AI Integration in Cultural Heritage Conservation–Ethical Considerations and the Human Imperative. Int. J. Emerg.
+Disrupt. Innov. Educ. VISIONARIUM 2024, 2, 6. [ CrossRef]
+9. Schiller, A. Digital Photography and the Ethics of Photo Alteration. Ph.D. Thesis, Texas A&M University , College Station, TX,
+USA, 2008.
+10. Stanco, F.; Battiato, S.; Gallo, G. Digital imaging for cultural heritage preservation. In Analysis, Restoration, and Reconstruction of
+Ancient Artworks; Routledge: London, UK, 2011.
+11. Thompson, E.L. Legal and ethical considerations for digital recreations of cultural heritage. Chapman Law Rev. 2017, 20, 153.
+Heritage 2025, 8, 9 21 of 21
+12. Rouhani, B. Ethically Digital: Contested Cultural Heritage in Digital Context. Stud. Digit. Herit. 2023, 7, 1–16. [ CrossRef]
+13. Spence, E.; Quinn, M. Two dimensions of photo manipulation: Correction and corruption. Aust. J. Prof. Appl. Ethics 2007, 9, 44–60.
+14. Masnou, S.; Morel, J.M. Level lines based disocclusion. In Proceedings of the 1998 International Conference on Image Processing,
+Chicago, IL, USA, 7 October 1998; pp. 259–263.
+15. van Roosmalen, P .M.B.; Kokaram, A.C.; Biemond, J. Fast high quality interpolation of missing data in image sequences using a
+controlled pasting scheme. In Proceedings of the 1999 IEEE International Conference on Acoustics, Speech, and Signal Processing,
+Phoenix, AZ, USA, 15–19 March 1999; V olume 6, pp. 3105–3108.
+16. Efros, A.A.; Leung, T.K. Texture synthesis by non-parametric sampling. In Proceedings of the Seventh IEEE International
+Conference on Computer Vision, Corfu, Greece, 20–25 September 1999; V olume 2, pp. 1033–1038. [ CrossRef]
+17. Kwatra, V .; Schödl, A.; Essa, I.; Turk, G.; Bobick, A. Graphcut Textures: Image and Video Synthesis Using Graph Cuts. ACM
+T rans. Graph. 2003, 22, 277–286. [ CrossRef]
+18. Criminisi, A.; Perez, P .; Toyama, K. Object Removal by Exemplar-based Inpainting. In Proceedings of the IEEE Computer Vision
+and Pattern Recognition (CVPR), Madison, WI, USA, 18–20 June 2003.
+19. Newson, A.; Almansa, A.; Fradet, M.; Gousseau, Y .; Pérez, P . Video Inpainting of Complex Scenes. SIAM J. Imaging Sci. 2014,
+7, 1993–2019. [ CrossRef]
+20. Wexler, Y .; Shechtman, E.; Irani, M. Space-Time Completion of Video. IEEE T rans. Pattern Anal. Mach. Intell. 2007, 29, 463–476.
+[CrossRef] [PubMed]
+21. Tesfaldet, M.; Brubaker, M.A.; Derpanis, K.G. Two-stream convolutional networks for dynamic texture synthesis. arXiv 2017,
+arXiv:1706.06982.
+22. Xie, J.; Zhu, S.C.; Wu, Y .N. Synthesizing dynamic patterns by spatial-temporal generative convnet. In Proceedings of the IEEE
+Conference on Computer Vision and Pattern Recognition, Honolulu, HI, USA, 21–26 July 2017; pp. 7093–7101.
+23. Betker, J.; Goh, G.; Jing, L.; Brooks, T.; Wang, J.; Li, L.; Ouyang, L.; Zhuang, J.; Lee, J.; Guo, Y .; et al. Improving Image Generation
+with Better Captions. 2023. Available online: https://cdn.openai.com/papers/dall-e-3.pdf (accessed on 1 December 2024 ).
+24. Knochel, A.D. Midjourney Killed the Photoshop Star: Assembling the Emerging Field of Synthography . Stud. Art Educ. 2023,
+64, 467–481. [ CrossRef]
+25. Baraheem, S.S.; Le, T.N.; Nguyen, T.V . Image synthesis: A review of methods, datasets, evaluation metrics, and future outlook.
+Artif. Intell. Rev. 2023, 56, 10813–10865. [ CrossRef]
+26. Aydın, Ö.; Karaarslan, E. OpenAI ChatGPT generated literature review: Digital twin in healthcare. In Emerging Computer
+T echnologies; Aydın, Ö., Ed.; Elsevier: Amsterdam, The Netherlands , 2022; V olume 2.
+27. Chiu, T.K. The impact of Generative AI (GenAI) on practices, policies and research direction in education: A case of ChatGPT
+and Midjourney . Interact. Learn. Environ. 2023, 1–17. [ CrossRef]
+28. Farella, E.M.; Malek, S.; Remondino, F. Colorizing the past: Deep learning for the automatic colorization of historical aerial
+images. J. Imaging 2022, 8, 269. [ CrossRef]
+29. Wood, B. A review of the concept of authenticity in heritage, with particular reference to historic houses. Collections 2020, 16, 8–33.
+[CrossRef]
+30. Hanif, S. The Aspects of Authenticity in the Digitalization of Cultural Heritage: A Drifting Paradigm. In Proceedings of the 2023
+International Conference on Sustaining Heritage: Innovative and Digital Approaches (ICSH), Sakhir, Bahrain, 18–19 June 2023;
+pp. 39–44. [ CrossRef]
+31. Alivizatou, M. Debating heritage authenticity: Kastom and development at the Vanuatu Cultural Centre. Int. J. Herit. Stud. 2012,
+18, 124–143. [ CrossRef]
+32. Koutsaftis, C.; Georgopoulos, A. A serious game in the Stoa of Attalos: Edutainment, heritage values and authenticity . In
+Proceedings of the 2015 Digital Heritage, Granada, Spain, 28 September–2 October 2015; V olume 2, pp. 751–752. [ CrossRef]
+33. Benjamin, W. The work of art in the age of mechanical reproduction. In A Museum Studies Approach to Heritage ; Routledge:
+London, UK, 2018; pp. 226–243.
+34. Baudrillard, J. Simulacra and simulations. In The New Social Theory Reader ; Routledge: London, UK, 2020; pp. 230–234.
+35. Yan, Z.; Zhang, H.; Wang, B.; Paris, S.; Yu, Y . Automatic photo adjustment using deep neural networks. ACM T rans. Graph. (TOG)
+2016, 35, 1–15. [ CrossRef]
+36. Salmona, A.; Bouza, L.; Delon, J. Deoldify: A review and implementation of an automatic colorization method. Image Process.
+Line 2022, 12, 347–368. [ CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
