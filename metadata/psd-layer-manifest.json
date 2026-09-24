@@ -1,0 +1,105 @@
+{
+  "created_utc": "2026-09-24T23:48:59.575575+00:00",
+  "psd_tools_version": "1.19.0",
+  "source_policy": "User-provided local PSD candidates; source PSD binaries are not copied into the public archive.",
+  "transformation": [
+    "PSD layer rasterisation via psd-tools topil()",
+    "native layer crop and alpha preserved",
+    "no generative enhancement",
+    "no manual retouching"
+  ],
+  "files": [
+    {
+      "source_file": "cp_1.psd",
+      "source_size_bytes": 34904210,
+      "source_sha256": "2d11795be12f391b98650fc75c4f1e1091cfea294e5b5ce182cda31477a7b2d8",
+      "layers": [
+        {
+          "index": 0,
+          "name": "Pozadí",
+          "kind": "pixel",
+          "visible": true,
+          "bbox": [
+            0,
+            0,
+            1920,
+            1080
+          ],
+          "exported": true,
+          "path": "cp_1/layer-00-pixel.png",
+          "mode": "RGB",
+          "size": [
+            1920,
+            1080
+          ],
+          "sha256": "0934748d91753e60ee807b59f0f1b1c2c6a323929a30524bccbd7e0d6522c503"
+        },
+        {
+          "index": 1,
+          "name": "odstraň lidi a objekty před domy. proveď kolorizaci historické fotografie. nijak neměň obsah fotografie s architekturu.",
+          "kind": "smartobject",
+          "visible": true,
+          "bbox": [
+            234,
+            0,
+            1686,
+            1080
+          ],
+          "exported": true,
+          "path": "cp_1/layer-01-smartobject.png",
+          "mode": "RGBA",
+          "size": [
+            1452,
+            1080
+          ],
+          "sha256": "2178e1b037d64fe5d714c6e5a31b0bb6edce8d36b8579f012bdc40f668177a86"
+        },
+        {
+          "index": 2,
+          "name": "odstran všechny sloupy a značky včetně morového sloupu",
+          "kind": "smartobject",
+          "visible": true,
+          "bbox": [
+            274,
+            0,
+            1689,
+            1080
+          ],
+          "exported": true,
+          "path": "cp_1/layer-02-smartobject.png",
+          "mode": "RGBA",
+          "size": [
+            1415,
+            1080
+          ],
+          "sha256": "dd6a1b84a9343a3198b770a6ad34e6fd689e6476fe3ef40083f57c00f5ad6be0"
+        },
+        {
+          "index": 3,
+          "name": "zvyš rozlišení a ditaily, odeber stín na přední straně domu",
+          "kind": "smartobject",
+          "visible": true,
+          "bbox": [
+            273,
+            0,
+            1697,
+            1080
+          ],
+          "exported": true,
+          "path": "cp_1/layer-03-smartobject.png",
+          "mode": "RGBA",
+          "size": [
+            1424,
+            1080
+          ],
+          "sha256": "08f66d09e3200001303fb463dc2c9f6439676767b0b0d9a8740bc238cbfe54ff"
+        }
+      ],
+      "canvas_size": [
+        1920,
+        1080
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -27,6 +27,25 @@ name, dimensions, output path, and SHA-256 for every extracted file.
 Figure 9 is vector-drawn in the PDF and is intentionally left in the original
 PDF rather than being rasterised into this archive.
 
+## Working PSD layer export
+
+A separate layer export was built from the directly verified local `cp_1.psd`
+working file. The source PSD binary stays outside the public repository. The
+four exported PNGs in `data/layers/working_psd_exports/` were produced with
+`psd-tools` 1.19.0 by rasterising visible top-level layers, preserving native
+layer crops, alpha, and canvas bounds. No generative enhancement or manual
+retouching was applied. The machine-readable manifest in
+`metadata/psd-layer-manifest.json` records the source basename, byte size,
+SHA-256, layer names/kinds/bounds, output path, dimensions, and output hash.
+
+The `cp_1` source is visually and structurally mapped to the article's Figure
+7/10 case: its four visible layers are the historical source and three
+successive contextual-fill/colourisation/detail states. Additional local
+working candidates were intentionally left out of this public commit until
+their exact article mapping and rights are checked. The raw supporting data
+described in the article remain available from the authors on request rather
+than being claimed here as a complete public dataset.
+
 ## Recovered material boundary
 
 The original LaTeX project was not found in the available local archive. The
