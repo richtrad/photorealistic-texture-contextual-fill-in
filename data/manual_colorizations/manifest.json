@@ -1,0 +1,175 @@
+{
+  "created_utc": "2026-09-25T00:22:25.093860+00:00",
+  "max_dimension": 4096,
+  "resampling": "Pillow LANCZOS",
+  "encoding": "PNG optimize=True compress_level=9",
+  "transformation": [
+    "bounded downscaling for a GitHub-safe presentation copy",
+    "no colour correction, retouching, generative enhancement, or content edits",
+    "RGB/RGBA source mode preserved"
+  ],
+  "files": [
+    {
+      "source_file": "3NAM_545.png",
+      "source_size_bytes": 2922230,
+      "source_sha256": "7e95fff826aa2c391be461b9aa09343618dacc8c7d6f21b814873c414f0a3665",
+      "source_dimensions": [
+        1482,
+        1934
+      ],
+      "source_mode": "RGB",
+      "output_file": "3NAM_545.png",
+      "output_dimensions": [
+        1482,
+        1934
+      ],
+      "output_mode": "RGB",
+      "output_size_bytes": 2808645,
+      "output_sha256": "34300e55cd451d30a1c9a3a44711e5204b3b2cd4ee4992fde4930f2d09bfd6e2"
+    },
+    {
+      "source_file": "3NAM_zastavka++.jpg",
+      "source_size_bytes": 195037,
+      "source_sha256": "9d6e3308ae133030e0c845685b63d27c2a7752fc0f39a5e9b31d9bac650c87b1",
+      "source_dimensions": [
+        2048,
+        678
+      ],
+      "source_mode": "RGB",
+      "output_file": "3NAM_zastavka++.png",
+      "output_dimensions": [
+        2048,
+        678
+      ],
+      "output_mode": "RGB",
+      "output_size_bytes": 984785,
+      "output_sha256": "6211963994e63b01ab4dc58e16549b60589ce8d7b4c2ced4b273e6ce43b412c1"
+    },
+    {
+      "source_file": "3NAM_zastavka+.png",
+      "source_size_bytes": 1408151,
+      "source_sha256": "ceee7ce9026b24aded1f634b9f68ada94f91d960eb86413df099841d72830941",
+      "source_dimensions": [
+        2048,
+        678
+      ],
+      "source_mode": "RGB",
+      "output_file": "3NAM_zastavka+.png",
+      "output_dimensions": [
+        2048,
+        678
+      ],
+      "output_mode": "RGB",
+      "output_size_bytes": 1346902,
+      "output_sha256": "71ce3aa87589aedfa85c62a621b3f62d997bb65bf3fa7a7f10ab24f4fa8b4320"
+    },
+    {
+      "source_file": "3NAM_zastavka.png",
+      "source_size_bytes": 1598199,
+      "source_sha256": "3e6f3e48c9f579323352c859dc964e69d916f63d283733fc3f0f62c90c359710",
+      "source_dimensions": [
+        2048,
+        678
+      ],
+      "source_mode": "RGB",
+      "output_file": "3NAM_zastavka.png",
+      "output_dimensions": [
+        2048,
+        678
+      ],
+      "output_mode": "RGB",
+      "output_size_bytes": 1552087,
+      "output_sha256": "fb88865b6e58a79d38f2db48f4c6675bf65f42b32c66497f64e45ebf95db4b3e"
+    },
+    {
+      "source_file": "cp_230_001_ali.png",
+      "source_size_bytes": 172630908,
+      "source_sha256": "dd8234768a8ecb88ffab290697fc3b5c53e05ed29478267e14fba1b4c2aeb452",
+      "source_dimensions": [
+        17291,
+        11203
+      ],
+      "source_mode": "RGB",
+      "output_file": "cp_230_001_ali.png",
+      "output_dimensions": [
+        4096,
+        2654
+      ],
+      "output_mode": "RGB",
+      "output_size_bytes": 14201822,
+      "output_sha256": "b594c0469fb047b038fa12a4dba6392a6fc2c7ef32330d93b1b76028d04a05eb"
+    },
+    {
+      "source_file": "cp_245,246_003_ali.png",
+      "source_size_bytes": 183708130,
+      "source_sha256": "02dc3ffa4cfe58aebc113262959c1949c792df193963b4f9510b589099e558ea",
+      "source_dimensions": [
+        17517,
+        12925
+      ],
+      "source_mode": "RGB",
+      "output_file": "cp_245,246_003_ali.png",
+      "output_dimensions": [
+        4096,
+        3022
+      ],
+      "output_mode": "RGB",
+      "output_size_bytes": 13601839,
+      "output_sha256": "adeefd861e4d864bef0b1b4296873cbc7007d3c3422fe916e6a4279b6d202d84"
+    },
+    {
+      "source_file": "cp_255_001_ali.png",
+      "source_size_bytes": 183530398,
+      "source_sha256": "b76d3b7821eae3986f6d63fa59d4a79a6772b1e33e2fc2e9e562b3b29ccc4108",
+      "source_dimensions": [
+        13195,
+        17948
+      ],
+      "source_mode": "RGB",
+      "output_file": "cp_255_001_ali.png",
+      "output_dimensions": [
+        3011,
+        4096
+      ],
+      "output_mode": "RGB",
+      "output_size_bytes": 11581625,
+      "output_sha256": "5aabfad0f80063e3b86a6fac1bee60ded14348bac8eee5bf536b6f4e0237e112"
+    },
+    {
+      "source_file": "cp_256_001_ali.png",
+      "source_size_bytes": 235214837,
+      "source_sha256": "1f00ebc749dcf3f434b83a3c307fc61a5492032bdd320ada36646f1a3e0bcfee",
+      "source_dimensions": [
+        18365,
+        13433
+      ],
+      "source_mode": "RGBA",
+      "output_file": "cp_256_001_ali.png",
+      "output_dimensions": [
+        4096,
+        2996
+      ],
+      "output_mode": "RGBA",
+      "output_size_bytes": 13928263,
+      "output_sha256": "a6123eedc33950427964bf42fa47d2e32d2f75c11272f3907adf3786fdb10120"
+    },
+    {
+      "source_file": "cp_256_002_ali.png",
+      "source_size_bytes": 181085438,
+      "source_sha256": "10fe9296502e210069383c407c0282cce5ba9a4d3354296a1bbdd12d0cf0541c",
+      "source_dimensions": [
+        17885,
+        12840
+      ],
+      "source_mode": "RGB",
+      "output_file": "cp_256_002_ali.png",
+      "output_dimensions": [
+        4096,
+        2941
+      ],
+      "output_mode": "RGB",
+      "output_size_bytes": 11616993,
+      "output_sha256": "5f4b8dc9411733b9416c44cbf77b9ec32fc447fc11ca55b47349ef115a1cb009"
+    }
+  ]
+}

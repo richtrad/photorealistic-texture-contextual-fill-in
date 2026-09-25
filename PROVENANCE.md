@@ -46,6 +46,26 @@ their exact article mapping and rights are checked. The raw supporting data
 described in the article remain available from the authors on request rather
 than being claimed here as a complete public dataset.
 
+## Manual-colourisation outputs
+
+The private Drive folders `kopali kolorovano` and its `rr kolorovano`
+subfolder contain a separate manual-colourisation branch. Nine source
+PNG/JPEG files were copied to a temporary staging area and converted to
+bounded 4096-pixel-maximum PNG presentation copies in
+`data/manual_colorizations/`. The conversion uses Pillow LANCZOS resizing and
+lossless PNG encoding only; it applies no colour correction, retouching,
+sharpening, generative enhancement, or content edit. RGB/RGBA source modes are
+preserved.
+
+The output manifest records every source and output hash, dimensions, and
+mode. The machine-readable Drive provenance is in
+`metadata/manual-colorization-sources.json`, including the folder/file IDs,
+source byte sizes, and Drive modification times. The original large PNG/JPEG
+files and all PSD/PSB working files remain outside this public repository.
+These outputs are derived working material and do not constitute a complete
+release of the raw historical-photo data; third-party rights and attribution
+remain subject to the applicable source terms.
+
 ## Recovered material boundary
 
 The original LaTeX project was not found in the available local archive. The

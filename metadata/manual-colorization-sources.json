@@ -1,0 +1,37 @@
+{
+  "description": "Drive provenance for the public presentation copies in data/manual_colorizations/.",
+  "source_root_folder": {"name": "Drive folder supplied by the author", "id": "1yN0M6OPykMT5HUkzTaEG24Z1whOeQirG"},
+  "folders": [
+    {
+      "name": "kopali kolorovano",
+      "id": "16bE5U4YTu_xxd9K_JdsQ7_OtHae7OymI",
+      "files": [
+        {"name": "cp_245,246_003_ali.png", "id": "1a0Y7PKFOJoGJLM9ysJ59s2fqARVTuyoK", "size_bytes": 183708130, "modified_utc": "2025-05-12T16:55:35Z"},
+        {"name": "cp_230_001_ali.png", "id": "1Pk9p42RvU5Elydn2cKqvTeqGL2z0X7-v", "size_bytes": 172630908, "modified_utc": "2025-05-12T16:47:15Z"},
+        {"name": "cp_230_001_ali.psd", "id": "1CtNVgriLahvOFw2ELXbKzFbjpAteBDOE", "size_bytes": 565745829, "modified_utc": null, "public_copy": false},
+        {"name": "cp_255_001_ali.png", "id": "1LKl1b3CiH0GorOpwZk9ianNCcy8oGghp", "size_bytes": 183530398, "modified_utc": "2025-05-12T16:33:52Z"},
+        {"name": "cp_255_001_ali.psd", "id": "1K35p1EbEg2PTrhPSbDg0sZbSq8xSclMi", "size_bytes": 567971688, "modified_utc": null, "public_copy": false},
+        {"name": "cp_256_002_ali.png", "id": "1x9UjDE6yWnwsmtpcCgPvIII9ziG03MPH", "size_bytes": 181085438, "modified_utc": "2025-05-12T15:29:17Z"},
+        {"name": "cp_256_002_ali.psb", "id": "1QiUaYEnXEj9K2bnGS82zAcZ6i9TusJfw", "size_bytes": 2426964811, "modified_utc": null, "public_copy": false},
+        {"name": "cp_256_001_ali.png", "id": "1I0wo2ZAauwKR2y66388VTcBRnChYs6DI", "size_bytes": 235214837, "modified_utc": "2025-05-12T14:46:48Z"},
+        {"name": "cp_256_001_ali.psd", "id": "1JzQ0sFh54am-lsoV-4CR2DVznPtDzmmC", "size_bytes": 1406949844, "modified_utc": null, "public_copy": false}
+      ]
+    },
+    {
+      "name": "rr kolorovano",
+      "id": "19YDTsTPNZLrji-wzW2htZDdeS_W-7-wp",
+      "parent_folder": "16bE5U4YTu_xxd9K_JdsQ7_OtHae7OymI",
+      "files": [
+        {"name": "3NAM_545.png", "id": "1uhhrx0PLPYsO7B5rfVcyu2sqG9ATxuRi", "size_bytes": 2922230, "modified_utc": "2026-04-08T12:22:14Z"},
+        {"name": "3NAM_zastavka.png", "id": "1lz0FkDjlPzI86KEQ5HBaN1zPp5R_i8X_", "size_bytes": 1598199, "modified_utc": "2026-04-08T12:21:30Z"},
+        {"name": "3NAM_zastavka++.jpg", "id": "1cTJ-U767Q6smolZDF9s5TGm8mmXgU6qd", "size_bytes": 195037, "modified_utc": "2026-04-08T12:21:19Z"},
+        {"name": "3NAM_zastavka+.png", "id": "1wjeuROSlqT9BbLzkZcP1K6aQIcG8-p3D", "size_bytes": 1408151, "modified_utc": "2026-04-08T12:21:10Z"}
+      ]
+    }
+  ],
+  "public_copy_policy": {
+    "included": "Nine bounded PNG presentation copies generated from the nine source PNG/JPEG files.",
+    "excluded": "Original source binaries and all PSD/PSB working files remain outside the public repository.",
+    "rights": "This provenance record does not grant additional rights to historical photographs or other third-party material."
+  }
+}

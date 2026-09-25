@@ -25,7 +25,11 @@ metadata/
   psd-layer-manifest.json                                     # source/output hashes for layer exports
 data/layers/working_psd_exports/                               # PNG exports; source PSDs are excluded
   README.md                                                    # export method and provenance boundary
+data/manual_colorizations/                                    # bounded PNG copies of manual colourisations
+  README.md                                                    # source and rights boundary
+  manifest.json                                                # source/output dimensions and hashes
 tools/extract_pdf_figures.py                                   # reproducible extraction script
+tools/prepare_manual_colorizations.py                          # reproducible bounded PNG export
 CITATION.cff
 citation.bib
 LICENSE-ARTICLE.md
@@ -47,6 +51,13 @@ the export manifest records their basenames, sizes, SHA-256 hashes, layer
 names, bounding boxes, and the hashes of the PNG outputs. `cp_1` is the
 verified Figure 7/10 case. Additional local candidates remain outside this
 public commit until their article mapping and rights are checked.
+
+The separate `data/manual_colorizations/` directory contains nine bounded PNG
+copies from the Drive folders `kopali kolorovano` and `rr kolorovano`. These are
+manual-colourisation outputs, not Photoshop layers. Their Drive IDs, source
+sizes, modification times, and output hashes are recorded in
+`metadata/manual-colorization-sources.json` and
+`data/manual_colorizations/manifest.json`.
 
 ## Source and data boundary
 
